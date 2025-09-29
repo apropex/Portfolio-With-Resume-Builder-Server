@@ -1,0 +1,35 @@
+
+
+
+
+
+bun add express bcryptjs cors dotenv jsonwebtoken mongoose
+
+
+
+bun add -D typescript ts-node nodemon
+
+bun add -D @types/express @types/node
+
+
+
+bunx tsc --init
+
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "CommonJS",
+    "strict": true,
+    "outDir": "dist",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
+
+
+"scripts": {
+  "dev": "nodemon --watch src --exec ts-node src/server.ts",
+  "build": "tsc",
+  "start": "node dist/server.js"
+}
