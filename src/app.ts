@@ -2,7 +2,7 @@ import compression from "compression";
 import cors from "cors";
 import express from "express";
 import { authRouter } from "./modules/auth/auth.routes.js";
-import { postRouter } from "./modules/blog/post.router.js";
+import { postRouter } from "./modules/blog/blog.router.js";
 import { userRouter } from "./modules/user/user.routes.js";
 
 const app = express();

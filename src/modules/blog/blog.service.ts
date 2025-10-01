@@ -5,7 +5,7 @@ const { FindUnique, Delete, FindMany, Create, Update, Count } = PrismaOptions(
   prisma.blog,
 );
 
-export interface iGetAllPostsParams {
+export interface iGetAllBlogsParams {
   page?: number;
   limit?: number;
   search?: string;
@@ -13,7 +13,7 @@ export interface iGetAllPostsParams {
   tags?: string[];
 }
 
-const createPost = async (payload: Prisma.BlogCreateInput): Promise<Blog> => {
+const createBlog = async (payload: Prisma.BlogCreateInput): Promise<Blog> => {
   const result = await Create({
     data: payload,
     include: {
@@ -30,13 +30,13 @@ const createPost = async (payload: Prisma.BlogCreateInput): Promise<Blog> => {
   return result;
 };
 
-const getAllPosts = async ({
+const getAllBlogs = async ({
   page = 1,
   limit = 10,
   search,
   isFeatured,
   tags,
-}: iGetAllPostsParams) => {
+}: iGetAllBlogsParams) => {
   const skip = (page - 1) * limit;
 
   const where: any = {
@@ -77,7 +77,7 @@ const getAllPosts = async ({
   };
 };
 
-const getPostById = async (id: string) => {
+const getBlogById = async (id: string) => {
   // return await prisma.$transaction(async (tx) => {
   //   return await tx.blog.findUnique({
   //     where: { id },
@@ -99,11 +99,11 @@ const getPostById = async (id: string) => {
   });
 };
 
-const updatePost = async (id: string, data: Partial<any>) => {
+const updateBlog = async (id: string, data: Partial<any>) => {
   return Update({ where: { id }, data });
 };
 
-const deletePost = async (id: string) => {
+const deleteBlog = async (id: string) => {
   return Delete({ where: { id } });
 };
 
@@ -158,11 +158,11 @@ const getBlogStat = async () => {
 }
     */
 
-export const PostService = {
-  createPost,
-  getAllPosts,
-  getPostById,
-  updatePost,
-  deletePost,
+export const BlogService = {
+  createBlog,
+  getAllBlogs,
+  getBlogById,
+  updateBlog,
+  deleteBlog,
   // getBlogStat
 };
