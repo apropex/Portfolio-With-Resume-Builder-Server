@@ -10,14 +10,16 @@ datasource db {
 // User model for blog authors or readers
 model User {
   id         String   @id @default(uuid())
-  email      String   @unique
   name       String
+  email      String   @unique
+  password   String?
   bio        String?  @default("")
   image      String?
-  password   String?
+  role       Role     @default(USER)
+  isVerified Boolean  @default(true)
+  isDeleted  Boolean  @default(false)
   provider   String?
   providerId String?
-  role       Role     @default(USER)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   posts      Blog[] // One-to-many relation with Blog

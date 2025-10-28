@@ -1,9 +1,6 @@
 
 
-
-
-
-bun add express bcryptjs cors dotenv jsonwebtoken mongoose
+bun add express bcryptjs cors dotenv jsonwebtoken
 
 
 
@@ -43,6 +40,5 @@ bunx prisma init
 
 bunx prisma migrate dev --name init
 bunx prisma generate
-
 
 
